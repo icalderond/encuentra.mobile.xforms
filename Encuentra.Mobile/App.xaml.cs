@@ -1,32 +1,33 @@
 ﻿using System;
+using Encuentra.Mobile.Service;
+using Prism.Ioc;
+using Prism.Unity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Encuentra.Mobile.Views;
+using Encuentra.Mobile.ViewModels;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Encuentra.Mobile
 {
-    public partial class App : Application
+    public partial class App : PrismApplication
     {
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
         }
-
-        protected override void OnStart()
+        protected override async void OnInitialized()
         {
-            // Handle when your app starts
+            InitializeComponent();
+            ApiRestEncuentra apiRestEncuentra = new ApiRestEncuentra();
+            apiRestEncuentra.GetCities();
+
+            await NavigationService.NavigateAsync("NavigationPage/cities");
         }
-
-        protected override void OnSleep()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<CitiesPage, CitiesViewModel>("cities");
         }
     }
 }

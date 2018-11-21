@@ -19,8 +19,8 @@ namespace Encuentra.Mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            ApiRestEncuentra apiRestEncuentra = new ApiRestEncuentra();
-            apiRestEncuentra.GetCities();
+            //            ApiRestEncuentra apiRestEncuentra = new ApiRestEncuentra();
+            //          apiRestEncuentra.GetChurchesFromCity("jalisco");
 
             await NavigationService.NavigateAsync("NavigationPage/cities");
         }
@@ -28,6 +28,7 @@ namespace Encuentra.Mobile
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<CitiesPage, CitiesViewModel>("cities");
+            containerRegistry.RegisterForNavigation<ChurchesPage, ChurchesViewModel>("churches");
         }
     }
 }

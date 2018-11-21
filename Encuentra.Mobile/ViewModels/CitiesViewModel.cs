@@ -15,7 +15,7 @@ namespace Encuentra.Mobile.ViewModels
         {
             _navigationService = navigationService;
             apiRestEncuentra = new ApiRestEncuentra();
-            SelectCityCommand = new DelegateCommand<string>(SelectCity);
+            SelectCityCommand = new DelegateCommand<City>(SelectCity);
 
             apiRestEncuentra.GetCities_Completed += (s, a) =>
             {
@@ -27,9 +27,14 @@ namespace Encuentra.Mobile.ViewModels
             apiRestEncuentra.GetCities();
         }
 
-        private void SelectCity(string obj)
+        private async void SelectCity(City _city)
         {
+            NavigationParameters navigationParameter = new NavigationParameters
+            {
+                { "city", _city.edo }
+            };
 
+            await _navigationService.NavigateAsync("churches", navigationParameter);
         }
 
         private string _Title;
@@ -46,6 +51,6 @@ namespace Encuentra.Mobile.ViewModels
             set => SetProperty(ref _Cities, value);
         }
 
-        public DelegateCommand<string> SelectCityCommand { get; private set; }
+        public DelegateCommand<City> SelectCityCommand { get; private set; }
     }
 }

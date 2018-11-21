@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="Encuentra.Mobile.Views.CitiesPage"
              xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             x:Class="Encuentra.Mobile.Views.ChurchesPage"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Cities}">
+        <ListView ItemsSource="{Binding Churches}"
+                  HasUnevenRows="true">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding edo}"/>
+                    <TextCell Text="{Binding nombre}" Detail="{Binding direccion}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
          <ListView.Behaviors>

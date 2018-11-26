@@ -1,6 +1,4 @@
-﻿using System;
-using Encuentra.Mobile.Service;
-using Prism.Ioc;
+﻿using Prism.Ioc;
 using Prism.Unity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,9 +17,6 @@ namespace Encuentra.Mobile
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            //            ApiRestEncuentra apiRestEncuentra = new ApiRestEncuentra();
-            //          apiRestEncuentra.GetChurchesFromCity("jalisco");
-
             await NavigationService.NavigateAsync("NavigationPage/cities");
         }
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,6 +24,7 @@ namespace Encuentra.Mobile
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<CitiesPage, CitiesViewModel>("cities");
             containerRegistry.RegisterForNavigation<ChurchesPage, ChurchesViewModel>("churches");
+            containerRegistry.RegisterForNavigation<ChurchDetailsPage, ChurchDetailsViewModel>("church_detail");
         }
     }
 }

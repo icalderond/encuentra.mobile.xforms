@@ -52,9 +52,9 @@ namespace Encuentra.Mobile.Model
         {
             get => $"{cd}, {colonia}";
         }
-        //public override string ToString()
-        //{
-        //    return $"{cd}, {colonia}";
-        //}
+        public string UrlFoto
+        {
+            get => $@"http://legales.unionnorte.org/l/inmuebles/" + foto;
+        }
     }
 }

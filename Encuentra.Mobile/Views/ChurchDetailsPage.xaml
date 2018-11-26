@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="Encuentra.Mobile.Views.ChurchDetailsPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="Red" BindingContext="{Binding ChurchDetail}">
+                <Label Text="{Binding edo}"/>
+                <Label Text="{Binding cd}"/>
+                <Label Text="{Binding colonia}"/>
+                <Label Text="{Binding calle}"/>
+                <Label Text="{Binding no}"/>
+                <Image Source="{Binding UrlFoto}"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
